@@ -4,10 +4,10 @@ app = express()
 
 //setup static and middleware
 app.use(express.static('./public'))
-
-app.get("/", (req, res) =>{
-    res.sendFile(path.resolve(__dirname, './content/index.html'))
-})
+app.use(express.static('./content'))
+// app.get("/", (req, res) =>{
+//     res.sendFile(path.resolve(__dirname, './content/index.html'))
+// })
 
 app.all("*", (req, res) => {
     res.status(404).send('Reseource not found')
