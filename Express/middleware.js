@@ -1,13 +1,10 @@
-const express = require('express')
+const express = require('express');
+const auth = require('./authorize');
+const logger = require('./logger')
 
 app = express()
-app.use((req, res, next)=>{
-    const method = req.method;
-    const url = req.url
-    const time = new Date().getFullYear()
-    console.log(method, url, time)
-    next()
-})
+
+app.use([auth, logger])
 
 app.get('/', (req, res)=>{
     
